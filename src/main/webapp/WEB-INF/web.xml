@@ -9,9 +9,11 @@
     <servlet-class>com.example.web.HelloServlet</servlet-class>
   </servlet>
 
-  <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
+<!--  <servlet>-->
+<!--    <servlet-name>UserServlet</servlet-name>-->
+<!--    <servlet-class>com.example.web.UserServlet</servlet-class>-->
+<!--  </servlet>-->
+
+
 
 </web-app>

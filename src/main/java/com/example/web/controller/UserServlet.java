@@ -18,12 +18,9 @@ public class UserServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        System.out.println("Initializing UserServlet...");
         try {
             userDao = new UserDao();
-            System.out.println("UserDao initialized successfully");
         } catch (SQLException e) {
-            System.out.println("DB connection failed: " + e.getMessage());
             throw new ServletException("DB connection failed", e);
         }
     }
@@ -83,10 +80,11 @@ public class UserServlet extends HttpServlet {
     }
 
     private void insertUser(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String mobile = req.getParameter("mobile");
-        User user = new User(0, firstName, lastName, mobile);
+        User user = new User(id, firstName, lastName, mobile);
         userDao.addUser(user);
         resp.sendRedirect("users");
     }
