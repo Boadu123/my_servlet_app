@@ -30,6 +30,12 @@ public class UserTaskServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+
+        if ("new".equals(action)) {
+            req.setAttribute("action", "create");
+            req.getRequestDispatcher("/WEB-INF/views/task-form.jsp").forward(req, resp);
+        }
+
         if (action == null) action = "list";
 
         try {
@@ -80,6 +86,9 @@ public class UserTaskServlet extends HttpServlet {
                     break;
                 case "update":
                     updateTask(req, resp);
+                    break;
+                case "delete":
+                    deleteTask(req, resp);
                     break;
                 default:
                     resp.sendRedirect("tasks");

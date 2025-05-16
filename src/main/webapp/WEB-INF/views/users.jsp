@@ -1,4 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import = "java.util.List"%>
+<%@ page import = "com.example.web.database.User" %>
+
+<%
+    List<User> users = (List<User>) request.getAttribute("users");
+%>
 <html>
 <head>
     <title>User Management</title>
@@ -25,22 +31,23 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Mobile Number</th>
-            <th>Actions</th>
         </tr>
-        <c:forEach var="user" items="${users}">
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.mobileNumber}</td>
-                <td>
-                    <a href="users?action=edit&id=${user.id}">Edit</a>
-                    &nbsp;|&nbsp;
-                    <a href="users?action=delete&id=${user.id}"
-                       onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
+
+        <%
+            if(users != null){
+                for(User user: users){
+
+        %>
+        <tr>
+        </tr>
+            <td><%= user.getId() %></td>
+            <td><%= user.getFirstName() %></td>
+            <td><%= user.getLastName() %></td>
+            <td><%= user.getMobileNumber() %></td>
+        <%
+            }
+        }
+        %>
     </table>
 </body>
 </html>
