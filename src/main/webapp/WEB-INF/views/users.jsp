@@ -49,5 +49,10 @@
         }
         %>
     </table>
+   <br>
+   <br>
+    <a href="index.jsp">
+        <button>Back to Main Page</button>
+    </a>
 </body>
 </html>
