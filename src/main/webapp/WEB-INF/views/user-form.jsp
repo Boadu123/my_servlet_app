@@ -59,7 +59,6 @@
                 <button type="submit">
                     <c:choose>
                         <c:when test="${action == 'insert'}">Add User</c:when>
-                        <c:otherwise>Update User</c:otherwise>
                     </c:choose>
                 </button>
                 <a href="users" class="cancel-link">Cancel</a>
